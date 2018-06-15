@@ -222,7 +222,7 @@ Submitting Your code
 **This is a programming assignment, so you would have to submit the code on Blackboard**
 
 You have to submit the following file in a zip folder on the blackboard:
-* pe02.c - this file should have with `euclid_distance`, `get_weight` and `find_mean` function completed.  
+* pe02.c - this file should have with `euclid_distance` and `get_weight` function completed.  
 
 The **only** way to submit homework is through Blackboard.
 
