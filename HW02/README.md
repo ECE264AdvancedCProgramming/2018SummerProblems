@@ -150,6 +150,8 @@ You will be implementing this formula in this `euclid_distance` function
 
 ![Euclidean distance equation](/Equations/EuclideanDistance.gif)
 
+**Note that x is an n-dimensional point, where the number of dimensions are given by `dim`** 
+
 2. `get_weight` - This function is needed to find the weight for the weighted mean that we be performed to calculate the mean.
   * `double distance` - this is the distance of the point from the mean.
   * `int weight_factor` - this is the weight factor for the used to calculate the weight see the formula below
