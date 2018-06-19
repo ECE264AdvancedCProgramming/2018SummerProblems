@@ -117,11 +117,13 @@ It accepts the following arguments
   a. Calculate the distance between the data point and to all of the datapoints\
   b. If distance is less than the neighbour_distance\
   c. Return the set of neighbours as a array of pointers (i.e. 2D array)// const double * datapoint - the point under consideration\
+
   * `const double * datapoint` - the point under consideration
   * `const double * *datapoints` - All the points in the cluster (2D Array, cols = dim, rows = number of points)
   * `int no_points` - the number of rows of the 2D array `double * * datapoints`
   * `int dim` - the number of columns of the 2D array `double * * datapoints`
   * `double neighbour_distance` - the threshold distance above which neighbours are not considered
+  * `int* no_neighbours` - returns the number of neighbours by updating the value pointed to by the pointer
 
 4.`find_mean` - This method calculates the weighted mean for all the neighbouring data points.
   *  `const double * datapoint`: This is the point for which we are calculating the mean. It is an array of `dim` elements.
@@ -133,7 +135,6 @@ Note : Allocate memory for 'no_points' of rows. The pointers will point to NULL 
   * `int no_points`: number of data points i.e. the number of rows in the 2D array
   * `int dim` : dimension of the data
   * `int neighbour_distance` : the distance from the datapoint to look for neighbours.
-
 
 This function will implement the mathematical function below.
 Use the get_weight from the header/previous homework
