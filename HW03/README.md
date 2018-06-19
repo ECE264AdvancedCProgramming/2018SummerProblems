@@ -116,7 +116,7 @@ It accepts the following arguments
 
   a. Calculate the distance between the data point and to all of the datapoints\
   b. If distance is less than the neighbour_distance\
-  c. Return the set of neighbours as a array of pointers (i.e. 2D array)// const double * datapoint - the point under consideration\
+  c. Return the set of neighbours as a array of pointers (i.e. 2D array)\
 
   * `const double * datapoint` - the point under consideration
   * `const double * *datapoints` - All the points in the cluster (2D Array, cols = dim, rows = number of points)
@@ -138,6 +138,7 @@ Note : Allocate memory for 'no_points' of rows. The pointers will point to NULL 
 
 This function will implement the mathematical function below.
 Use the get_weight from the header/previous homework
+
 ![Weighted Mean equation](/Equations/Mean.png)
 
 
