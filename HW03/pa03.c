@@ -199,11 +199,16 @@ void deallocate_memory(double * * data, int no_points)
 #endif
 
 #ifndef TEST_NEIGHBOURS
-// For a data point, find the closest neighbouring data points which are at a distance lesser than neighbour_distance
+// For a data point, find the closest neighbouring data points which are at a distance lesser than "neighbour_distance"
 // 1. Calculate the distance between the data point and to all of the datapoints
-// 2. If distance is less than the neighbour_distance
+// 2. If distance is less than or equal to the "neighbour_distance"
 // 3. Return the set of neighbours as a array of pointers (i.e. 2D array)
 // Allocate memory for 'no_points' of rows. The pointers will point to NULL if the row has no neighbour for that row.
+// const double * datapoint - the point under consideration
+// const double * *datapoints - All the points in the cluster (2D Array, cols = dim, rows = number of points)
+// int no_points - the number of rows of the 2D array double ** datapoints
+// int dim - the number of columns of the 2D array double ** datapoints
+// double neighbour_distance - the threshold distance above which neighbours are not considered
 double * * get_neighbours(
    const double * datapoint,
    const double * * datapoints,
