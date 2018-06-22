@@ -122,15 +122,15 @@ It accepts the following arguments
   * `const double * *datapoints` - All the points in the cluster (2D Array, cols = dim, rows = number of points)
   * `int no_points` - the number of rows of the 2D array `double * * datapoints`
   * `int dim` - the number of columns of the 2D array `double * * datapoints`
-  * `double neighbour_distance` - the threshold distance above which neighbours are not considered
+  * `double neighbour_distance` - the threshold distance above which neighbours are not considered (Hint use:`use <=`)
   * `int* no_neighbours` - returns the number of neighbours by updating the value pointed to by the pointer
 
 4.`find_mean` - This method calculates the weighted mean for all the neighbouring data points.
-  * `const double * datapoint`- This is the point for which we are calculating the mean. It is an array of dim elements.
-  * `const double * * neighbours` - This is a 2D array of points. Number of rows is no_neighbours. And has dim columns.
+  * `const double * datapoint`- This is the point for which we are calculating the mean. It is an array of `dim` elements.
+  * `const double * * neighbours` - This is a 2D array of points. Number of rows is `no_neighbours`. And has `dim` columns.
   * `int no_neighbours` - This value informs how many neighbours are being considered for the particular datapoint.
   * `int dim` - this is the dimension of the datapoint and neighbours
-  * `int weight_factor` - this is the weight factor for the used to calculate the weight, passed to get_weight function
+  * `int weight_factor` - this is the weight factor for the used to calculate the weight, passed to `get_weight` function
 
 This function will implement the mathematical function below.
 Use the get_weight from the header/previous homework
