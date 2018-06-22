@@ -24,7 +24,7 @@ $(OBJS):$(BINDIR)/%.o: %.c
 	$(GCC) $(CFLAGS) -o $@ $<
 
 
-test: test1 test2 test3 test4 test5 testmem
+test: clean test1 test2 test3 test4 test5 testmem
 
 test1: pa03
 	./$(BINDIR)/pa03 Test-Cases/Test/test1.txt temp.txt
@@ -64,14 +64,7 @@ test_alloc: clean
 test_dealloc: clean
 	@mkdir -p $(BINDIR)
 	$(GCC) $(OBJFILES) $(LDFLAGS) $(SRC) $(DEFINE_FREE) -o $(BINDIR)/pa03
-	./$(BINDIR)/pa03 Test-Cases/Test/test1.txt temp.txt
-	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected1.txt
-	./$(BINDIR)/pa03 Test-Cases/Test/test2.txt temp.txt
-	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected2.txt
-	./$(BINDIR)/pa03 Test-Cases/Test/test3.txt temp.txt
-	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected3.txt
-	./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
-	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected4.txt
+	$(VALGRIND) ./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
 
 test_mean: clean
 	@mkdir -p $(BINDIR)
