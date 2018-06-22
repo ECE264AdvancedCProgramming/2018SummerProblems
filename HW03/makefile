@@ -23,23 +23,23 @@ test: test1 test2 test3 test4 test5 testmem
 
 test1: pa03
 	./$(BINDIR)/pa03 Test-Cases/Test/test1.txt temp.txt
-	diff temp.txt Test-Cases/Expected/expected1.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected1.txt
 
 test2: pa03
 	./$(BINDIR)/pa03 Test-Cases/Test/test2.txt temp.txt
-	diff temp.txt Test-Cases/Expected/expected2.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected2.txt
 
 test3: pa03
 	./$(BINDIR)/pa03 Test-Cases/Test/test3.txt temp.txt
-	diff temp.txt Test-Cases/Expected/expected3.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected3.txt
 
 test4: pa03
 	./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
-	diff temp.txt Test-Cases/Expected/expected4.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected4.txt
 
 test5: pa03
 	./$(BINDIR)/pa03 Test-Cases/Test/test5.txt temp.txt
-	diff temp.txt Test-Cases/Expected/expected5.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected5.txt
 
 testmem: pa03
 	$(VALGRIND) ./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
