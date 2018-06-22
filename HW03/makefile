@@ -1,13 +1,18 @@
-FLAGS 		= -std=c99 -g -Wall -Wshadow --pedantic -Wvla -Werror -lm
-GCC 		= gcc $(FLAGS)
-CFLAGS		= -c
-LDFLAGS		= 
-BINDIR		= bin
-OBJDIR		= obj
-SRC 		= pa03.c
-OBJS 		= $(SRC:%.c=$(BINDIR)/%.o)
-OBJFILES	= $(OBJDIR)/euclid_distance.o $(OBJDIR)/get_weight.o
-VALGRIND 	= valgrind --tool=memcheck --leak-check=full
+FLAGS 			= -std=c99 -g -Wall -Wshadow --pedantic -Wvla -Werror -lm
+GCC 			= gcc $(FLAGS)
+CFLAGS			= -c
+LDFLAGS			= 
+BINDIR			= bin
+OBJDIR			= obj
+SRC 			= pa03.c ./obj/solution_interface.c
+OBJS 			= $(SRC:%.c=$(BINDIR)/%.o)
+OBJFILES		= $(OBJDIR)/euclid_distance.o $(OBJDIR)/get_weight.o $(OBJDIR)/tester.o
+VALGRIND 		= valgrind --tool=memcheck --leak-check=full
+DEFINE_MEANSHIFT	= -DTEST_ALLOC -DTEST_FREE -DTEST_NEIGHBOURS -DTEST_MEAN
+DEFINE_ALLOC		= -DTEST_MEANSHIFT -DTEST_FREE -DTEST_NEIGHBOURS -DTEST_MEAN
+DEFINE_FREE		= -DTEST_MEANSHIFT -DTEST_ALLOC -DTEST_NEIGHBOURS -DTEST_MEAN
+DEFINE_NEIGH		= -DTEST_MEANSHIFT -DTEST_ALLOC -DTEST_FREE -DTEST_MEAN
+DEFINE_MEAN		= -DTEST_MEANSHIFT -DTEST_ALLOC -DTEST_FREE -DTEST_NEIGHBOURS
 
 all: pa03
 
@@ -44,9 +49,68 @@ test5: pa03
 testmem: pa03
 	$(VALGRIND) ./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
 
+test_alloc: clean
+	@mkdir -p $(BINDIR)
+	$(GCC) $(OBJFILES) $(LDFLAGS) $(SRC) $(DEFINE_ALLOC) -o $(BINDIR)/pa03
+	./$(BINDIR)/pa03 Test-Cases/Test/test1.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected1.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test2.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected2.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test3.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected3.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected4.txt
+
+test_dealloc: clean
+	@mkdir -p $(BINDIR)
+	$(GCC) $(OBJFILES) $(LDFLAGS) $(SRC) $(DEFINE_FREE) -o $(BINDIR)/pa03
+	./$(BINDIR)/pa03 Test-Cases/Test/test1.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected1.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test2.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected2.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test3.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected3.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected4.txt
+
+test_mean: clean
+	@mkdir -p $(BINDIR)
+	$(GCC) $(OBJFILES) $(LDFLAGS) $(SRC) $(DEFINE_MEAN) -o $(BINDIR)/pa03
+	./$(BINDIR)/pa03 Test-Cases/Test/test1.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected1.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test2.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected2.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test3.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected3.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected4.txt
+
+test_neigh: clean
+	@mkdir -p $(BINDIR)
+	$(GCC) $(OBJFILES) $(LDFLAGS) $(SRC) $(DEFINE_NEIGH) -o $(BINDIR)/pa03
+	./$(BINDIR)/pa03 Test-Cases/Test/test1.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected1.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test2.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected2.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test3.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected3.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected4.txt
+
+
+test_meanshift: clean
+	@mkdir -p $(BINDIR)
+	$(GCC) $(OBJFILES) $(LDFLAGS) $(SRC) $(DEFINE_MEANSHIFT) -o $(BINDIR)/pa03
+	./$(BINDIR)/pa03 Test-Cases/Test/test1.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected1.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test2.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected2.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test3.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected3.txt
+	./$(BINDIR)/pa03 Test-Cases/Test/test4.txt temp.txt
+	./$(OBJDIR)/cdiff temp.txt Test-Cases/Expected/expected4.txt
+
 .PHONY: build clean
 clean:
 	rm -f -r $(BINDIR)
 	rm -f temp.txt
-
-
