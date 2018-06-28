@@ -69,7 +69,7 @@ Harry, Potter, Was,
 
 In this case the order does not matter. By, Potter, Harry is the same as Harry, Potter, By which is the same as By, Potter, Harry and so on.
 
-Each string needs to be seperated by a comma ','. Each permuation needs to be followed by a newline character.
+Each string needs to be seperated by a comma ',' followed by a space. Each permuation needs to be followed by a newline character.
 
 **Hint for Task 1 and Task 2: A very elegant implementation is disscussed in Professor Yung-Hsiang Lu's textbook (The other textbook for the course).**
 All students should have access to it. 
@@ -147,6 +147,7 @@ Testing your code
 
 You can safely assume that each string will not be larger than 500. 
 **As the number of strings grow the time taken to compute goes up factorially. You can be asured that any test executed to grade your code will not require more than 15 seconds. So the number of strings may be quite small**.
+For compilation the file in obj folder is required please do not delete it.
 If you delete it then your code will not compile.
 Following are the files that you will see with the code:
 1. pa04.c - main file for this assignment
