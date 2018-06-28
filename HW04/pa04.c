@@ -13,7 +13,7 @@ int main(int argc, char** argv)
    parse(argc, argv);
 }
 
-#ifndef TEST_PER
+#ifdef TEST_PER
 
 // This function should print all possible permutations of the strings.
 // char * * arr - this is array of strings.
@@ -26,7 +26,7 @@ void permutation(char * * arr, int len)
 #endif
 
 
-#ifndef TEST_CMB
+#ifdef TEST_CMB
 // This function should print all possible combinations of the strings.
 // char * * arr - this is array of strings.
 // int len - the number of strings in `arr`.
@@ -39,7 +39,7 @@ void combination(char * * arr, int len, int sel)
 #endif
 
 
-#ifndef TEST_SUM
+#ifdef TEST_SUM
 // This funcation has to recursively count and print how many ways a number 'k' can be written as a sum of squares
 // int k - The number which needs to be expressed as a sum of squares.
 void sum_squares(int k)
