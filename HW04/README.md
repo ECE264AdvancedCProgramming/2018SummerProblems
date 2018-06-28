@@ -3,7 +3,7 @@
 ## This is an exercise.
 Please read the entire file before you ask any question.
 
-In this exercise you will learn how to use recursion for solving problems
+In this **exercise** (ignore the pa04.c file naming convention) you will learn how to use recursion for solving problems
 
 
 
