@@ -1,0 +1,8 @@
+stem
+ponder
+horse
+private
+naive
+bait
+
+
