@@ -2,10 +2,9 @@ FLAGS 		= -std=c99 -g -Wall -Wshadow --pedantic -Wvla -Werror -lm
 GCC 		= gcc $(FLAGS)
 CFLAGS		= -c
 LDFLAGS		=
-DEF_ALL		= -DTEST_SELECT -DTEST_DEST_LIST -DTEST_BUILD_LIST -DTEST_SEL_NAME -DTEST_SEL_YEAR -DTEST_COMPARE_NAME -DTEST_COMPARE_YEAR
 BINDIR		= bin
 OBJDIR 		= obj
-SRC 		= pa05.c
+SRC 		= pa05.c predefined.c
 OBJS 		= $(SRC:%.c=$(BINDIR)/%.o)
 OBJFILES	=
 VALGRIND 	= valgrind --tool=memcheck --leak-check=full
@@ -13,11 +12,11 @@ VALGRIND 	= valgrind --tool=memcheck --leak-check=full
 all: pa05
 
 pa05:$(OBJS)
-	$(GCC) $(OBJS) $(OBJFILES) $(LDFLAGS) $(DEF_ALL) -o $(BINDIR)/pa05
+	$(GCC) $(OBJS) $(OBJFILES) $(LDFLAGS) -o $(BINDIR)/pa05
 
 $(OBJS):$(BINDIR)/%.o: %.c
 	@mkdir -p $(@D)
-	$(GCC) $(CFLAGS) $(DEF_ALL) -o $@ $<
+	$(GCC) $(CFLAGS) -o $@ $<
 
 test: clean pa05 test1 test2 test3 test4 test5
 

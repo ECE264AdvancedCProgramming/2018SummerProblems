@@ -23,6 +23,7 @@ int main(int argc, char** argv)
 
 	// Call cleanup_parse_obj(Parse* parse_obj)
     	// Note this function is already provided to you, see pa05.h
+
 	return EXIT_SUCCESS;
 }
 
