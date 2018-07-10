@@ -2,8 +2,8 @@
 
 <strong>Please read the entire file before you start working on this exercise.</strong><br>
 
-In this an assignment you will build your own linkedlist data structure and simple studdent database. 
-This assignment takes time. You should start earlier.
+In this an assignment you will build your own linked list data structure and simple student database. 
+This assignment takes time. You should start early.
 
 ## Learning Goals
 * Understand linkedlist.
