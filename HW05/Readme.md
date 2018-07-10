@@ -1,9 +1,9 @@
 # HW05. Student Database SQL
 
-<strong>Please read the entire file before you start working on this exercise.</strong><br>
+<strong>Please read the entire file before you start working on this assignment.</strong><br>
 
-In this an assignment you will build your own linkedlist data structure and simple studdent database. 
-This assignment takes time. You should start earlier.
+In this an **assignment** you will build your own linked list data structure and simple student database. 
+This assignment takes time. You should start early.
 
 ## Learning Goals
 * Understand linkedlist.
@@ -20,6 +20,41 @@ This assignment takes time. You should start earlier.
  - Nodes don't have to be stored in contiguous memory locations.
  - The allocation is dynamic not static. The size of the linkedlist can be changed during the running time of the program (the size is not required to be known in advance).
  - insertion at (or deletion from) any position in constant time.
+
+About the assignment
+---------------------
+For this assignment we will build a simple student SQL database.
+We will implement a simple version of SQL
+We have three fields in our database. Student `Id`, `name` and `year` (see database.txt). 
+What we can do with SQL is select some of the nodes in the database based on a condition using the WHERE keyword. Also SQL allows us to sort the selected data using the SORT_BY keyword.
+For example if the student database has three noes/items
+
+1,Vettel,21\
+2,Mansell,23\
+3,Clark,28
+
+We can use the `SORT_BY` command to sort it by `NAME`
+We can type `SORT_BY NAME` and the output will be 
+3,Clark,28\
+2,Mansell,23\
+1,Vettel,21
+
+To this we can add a selection criteria by using WHERE
+`SORT_BY NAME WHERE ID “>” 1`, this will output the following
+3,Clark,28\
+2,Mansell,23
+
+**Implementation**
+The logic is to first build a linked list for each of the elements in the database.
+Then use the selection criteria to delete all the noes in the list that are not selected and finally sort this “select phase” list and print it.
+
+So this assignment provides the 
+1. Parsing function which parses all of the inputs into appropriate structs
+2. A bubble sort function to sort the list
+3. A function to print the list
+
+**“25% bonus points for implementing your own sort function using quick sort”. If you do attempt the bonus points question include the function in a separate file when submitting the code and name the file “bonus.c”**
+
 
 Functions you need to complete
 ---------------------------------
@@ -67,6 +102,8 @@ Type the following command to zip your file.
 	zip pa05.zip pa05.c
 ```
 <strong>You will not get any credits if the submitted file is not zipped</strong>
+
+**If you do attempt the bonus points question include the function in a separate file when submitting the code and name the file “bonus.c”**
 
 The **only** way to submit homework is through Blackboard.
 
