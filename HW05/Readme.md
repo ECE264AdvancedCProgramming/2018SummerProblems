@@ -1,8 +1,8 @@
 # HW05. Student Database SQL
 
-<strong>Please read the entire file before you start working on this exercise.</strong><br>
+<strong>Please read the entire file before you start working on this assignment.</strong><br>
 
-In this an assignment you will build your own linked list data structure and simple student database. 
+In this an **assignment** you will build your own linked list data structure and simple student database. 
 This assignment takes time. You should start early.
 
 ## Learning Goals
