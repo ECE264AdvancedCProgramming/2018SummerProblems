@@ -5,8 +5,6 @@ In this exercise you will be implementing a way to binary representation which r
 **do not exclude newline character**.
 
 <strong>Please read the entire file and the comments in the files provided before you ask any question.</strong><br>
-<strong>You should write your own Makefile to test the code.</strong>
-
 
 # Learning Goals
 You will learn to
@@ -29,31 +27,18 @@ Let suppose we have a binary tree as follows :
 
 ![binary tree](images/binaryTree.png)
 
-Once we have the tree, now we will convert it into its binary representation. We will be using **pre-order** traversing.
-The exercise requires that all the nodes which are not leaf nodes will have binary value as 0 rest will have 1 followed by binary value of the of the ascii value of the data. The last bit after traversal of Tree should be 0 - marking the end of tree.
+Once we have the tree, now we will convert it into its binary representation. We will be using **post-order** traversing.
+The exercise requires that all the nodes which are not leaf nodes will have binary value as 0 rest will have the binary value of the of the ascii value of the data.
 i.e. for above found tree, the binary representation will be
 ```
-0 0 1binary(ascii(6)) 0 1binary(ascii(\)) 0 1binary(ascii(n)) 0 1binary(ascii({)) 0
+0 0 binary(ascii(6)) 0 binary(ascii(\)) 0 binary(ascii(n)) 0 binary(ascii({))
 
 which is (Please mind that there are no spaces, they are just there to make it easy to understand):
 
-0 0 100110110 0 101011100 0 101101110 0 101111011 0
+00000000 00000000 00110110 00000000 01011100 00000000 01101110 00000000 01111011
 
 ```
 you can think of it as ![Binary representation](images/printTree.png)
-
-In this Homework you cannot directly write characters to the file. You would have to pack the bits. For eg. If you use the following code:
-
-```
-	FILE * outputFilePtr = fopen(?somefile?,?wb?);
-	char not_leaf_node = 0;
-	fwrite(&not_leaf_node, sizeof(char),1,outputFilePtr);
-```
-
-then it writes 00000000 i.e. 8 zeros to the outputFile and not a single bit 0. 
-
-Thus, you would have to have to pack 8 bits before writing it to the file.  Thus for the given example above, if we want to write `0 0 100110110 0 101011100 ??.`  to the file. Then the first character will have bit value = `00100110`, which should get printed to the file.
-
 
 # Functions you need to complete
 In this exercise, you have to complete the following functions - `CreateTreeNode`, `CreateBST`,`CreateArrayOfElements`, `saveBST`, `cleanup` and `main()` in `pe06.c`.
@@ -74,8 +59,6 @@ else saves 0 (zero). The file is a binary file so use the appropriate function t
   6. If tree is not generated and you get NULL from it, then print "Binary Create Failed \n" and return EXIT_FAILURE
   7. 3rd input is output filename, in which output needs to be printed
   8. If file read fails, free memory and return EXIT_FAILURE
-
-**CreateBinaryFromTree and WritePreOrderBinary together creates the binary representation of the tree. You can use any helper function that you want, if you use helper function, please put them within your #ifndef WRITE\_BINARY definition.**
 
 P.S. :  You can check your expected binary files by using the following command :
 
@@ -110,7 +93,7 @@ Following are the files we provide:
 # Checking for memory errors
 You should also run ./pe06 with arguments under valgrind. To do that, you have to use, for example, the following command:
 ```
-valgrind --tool=memcheck --verbose --leak-check=full --log-file=expected/valgrind.log ./pe06 23 50 expected/expected7.bin
+valgrind --tool=memcheck --verbose --leak-check=full --log-file=expected/valgrind.log ./pe06 23 50 Expected/exp7.bin
 ```
 
 Note that you should use other input arguments to extensively test your function. If you follow the instructions and keep the malloc and free functions in the right place, you should not have memory problems in this exercise.
