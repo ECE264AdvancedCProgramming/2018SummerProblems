@@ -62,8 +62,6 @@ else saves 0 (zero). The file is a binary file so use the appropriate function t
   7. 3rd input is output filename, in which output needs to be printed
   8. If file read fails, free memory and return EXIT_FAILURE
 
-**CreateBinaryFromTree and WritePreOrderBinary together creates the binary representation of the tree. You can use any helper function that you want, if you use helper function, please put them within your #ifndef WRITE\_BINARY definition.**
-
 P.S. :  You can check your expected binary files by using the following command :
 
 ```
