@@ -5,8 +5,6 @@ In this exercise you will be implementing a way to binary representation which r
 **do not exclude newline character**.
 
 <strong>Please read the entire file and the comments in the files provided before you ask any question.</strong><br>
-<strong>You should write your own Makefile to test the code.</strong>
-
 
 # Learning Goals
 You will learn to
