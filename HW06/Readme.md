@@ -31,11 +31,11 @@ Once we have the tree, now we will convert it into its binary representation. We
 The exercise requires that all the nodes which are not leaf nodes will have binary value as 0 rest will have the binary value of the of the ascii value of the data.
 i.e. for above found tree, the binary representation will be
 ```
-0 0 binary(ascii(6)) 0 binary(ascii(\)) 0 binary(ascii(n)) 0 binary(ascii({))
+binary(ascii(6)) binary(ascii(\)) 0 0 binary(ascii(n)) binary(ascii({)) 0 0 0
 
 which is (Please mind that there are no spaces, they are just there to make it easy to understand):
 
-00000000 00000000 00110110 00000000 01011100 00000000 01101110 00000000 01111011
+00110110 01011100 00000000 00000000 01101110 01111011 00000000 00000000 00000000
 
 ```
 you can think of it as ![Binary representation](images/printTree.png)
@@ -70,9 +70,9 @@ example, if we run the command on `exp1.bin` file, we get:
 
 
 ```
-0000000: 00001110 01110011 00000000 00000000 01001011 00000000  .s..K.
-0000006: 00110101 00000000 00000000 00000000                    5...
-
+0000000: 00001011 00110101 00000000 00000000 01110100 00000000  .5..t.
+0000006: 11110101 00000000 00000000 00000000                    ....
+    
 ```
 
 
