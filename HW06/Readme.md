@@ -29,31 +29,18 @@ Let suppose we have a binary tree as follows :
 
 ![binary tree](images/binaryTree.png)
 
-Once we have the tree, now we will convert it into its binary representation. We will be using **pre-order** traversing.
-The exercise requires that all the nodes which are not leaf nodes will have binary value as 0 rest will have 1 followed by binary value of the of the ascii value of the data. The last bit after traversal of Tree should be 0 - marking the end of tree.
+Once we have the tree, now we will convert it into its binary representation. We will be using **post-order** traversing.
+The exercise requires that all the nodes which are not leaf nodes will have binary value as 0 rest will have the binary value of the of the ascii value of the data.
 i.e. for above found tree, the binary representation will be
 ```
-0 0 1binary(ascii(6)) 0 1binary(ascii(\)) 0 1binary(ascii(n)) 0 1binary(ascii({)) 0
+0 0 binary(ascii(6)) 0 binary(ascii(\)) 0 binary(ascii(n)) 0 binary(ascii({))
 
 which is (Please mind that there are no spaces, they are just there to make it easy to understand):
 
-0 0 100110110 0 101011100 0 101101110 0 101111011 0
+00000000 00000000 00110110 00000000 01011100 00000000 01101110 00000000 01111011
 
 ```
 you can think of it as ![Binary representation](images/printTree.png)
-
-In this Homework you cannot directly write characters to the file. You would have to pack the bits. For eg. If you use the following code:
-
-```
-	FILE * outputFilePtr = fopen(?somefile?,?wb?);
-	char not_leaf_node = 0;
-	fwrite(&not_leaf_node, sizeof(char),1,outputFilePtr);
-```
-
-then it writes 00000000 i.e. 8 zeros to the outputFile and not a single bit 0. 
-
-Thus, you would have to have to pack 8 bits before writing it to the file.  Thus for the given example above, if we want to write `0 0 100110110 0 101011100 ??.`  to the file. Then the first character will have bit value = `00100110`, which should get printed to the file.
-
 
 # Functions you need to complete
 In this exercise, you have to complete the following functions - `CreateTreeNode`, `CreateBST`,`CreateArrayOfElements`, `saveBST`, `cleanup` and `main()` in `pe06.c`.
