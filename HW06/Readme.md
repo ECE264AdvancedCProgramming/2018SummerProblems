@@ -95,7 +95,7 @@ Following are the files we provide:
 # Checking for memory errors
 You should also run ./pe06 with arguments under valgrind. To do that, you have to use, for example, the following command:
 ```
-valgrind --tool=memcheck --verbose --leak-check=full --log-file=expected/valgrind.log ./pe06 23 50 expected/expected7.bin
+valgrind --tool=memcheck --verbose --leak-check=full --log-file=expected/valgrind.log ./pe06 23 50 Expected/exp7.bin
 ```
 
 Note that you should use other input arguments to extensively test your function. If you follow the instructions and keep the malloc and free functions in the right place, you should not have memory problems in this exercise.
