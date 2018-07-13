@@ -1,4 +1,4 @@
-# Binary Tree (A)
+# Binary Tree
 
 ## This is an exercise
 In this exercise you will be implementing a way to binary representation which requires you to work with binary trees.  
@@ -15,8 +15,13 @@ You will learn to
 
 # Description of exercise
 This exercise requires you to do the following :
-1. Creating binary search tree by calling the function CreateBinarySearchTree. This function takes two inputs, random seed and number of nodes. It creates BST, by randomly choosing ascii values. 
-2. Creating a binary representation of the tree. For this part, we will consider that if the tree node is not a leaf node (i.e. have left child or right child) then the binary representation of that node is 0, otherwise the binary representation of the node is binary value of the data it stores. See the example below for better understanding
+1. Create an array of elements randomly initialized by a seed passed from the command line. The program has the following command line arguments
+	* random_seed 
+	* number_of_nodes 
+	* output_file_name
+	
+2. Create a binary search tree by calling the function CreateBST. 
+3. Traverse the binary search tree in **post order**. While traversing, if the node currently being visited is not the leaf node save 0. If the node is a leaf node save the value as the ascii value of the data stored in the current node. The data is saved in a binary file whose name is the third argument in the command line.
 
 ## Example for this exercise
 
@@ -51,10 +56,11 @@ Thus, you would have to have to pack 8 bits before writing it to the file.  Thus
 
 
 # Functions you need to complete
-In this exercise, you have to complete six functions - `CreateBinaryFromTree`, `WritePreOrderBinary`,`CleanTree`, `UnSig2Bin` in `tree.c`; and `main()` in `pe06.c`.
+In this exercise, you have to complete the following functions - `CreateTreeNode`, `CreateBST`,`CreateArrayOfElements`, `saveBST`, `cleanup` and `main()` in `pe06.c`.
 **Do not hardcode the name of the files in your code**
-1. `CreateBinaryFromTree` -  This function creates binary representation of input tree by opening the file in binary format and calling WritePreOrderBinary func. The output shoud be saved in a binary file. 
-2. `WritePreOrderBinary` - takes input as TreeNode \* and creates binary of the tree as specified in the example. Traversing **pre-order**.
+1. `CreateTreeNode` -  This function allocates the memory for a particular node and initializes the data of that node to value.
+2. `CreateBST` - Takes an array of elements and creates a binary search tree
+// from the elements of the array and returns the root of the tree
 3. `CleanTree` -  This function cleans up the memory allocated for the tree
 4. `UnSig2Bin` - This function creates binary from the unsigned char and returns binary value of as strings of the given input. Lenght of this string should be NUM\_BITS, as defined in `tree.h`.
 5. `main()` - In this exercise, your main function has the following the specifications.
