@@ -54,8 +54,7 @@ else saves 0 (zero). The file is a binary file so use the appropriate function t
   2. 1st input is long value using random seed needed for the generating the binary search tree
   3. 2nd input is long values - which is number of nodes for the binary search tree
   4. If the random seed or number of nodes input is wrong - Print "Wrong inputs\n" and return EXIT_FAILURE
-       For example number of nodes may be input as 12s4 which is not a number in this case you would print "Wrong inputs\n" 
-       Similarly for random seed. (Node random seed can take negative values too)
+       For example number of nodes may be input as 12s4 which is not a number in this case you would print "Wrong inputs\n" and return EXIT_FAILURE. Similarly for random seed. (Node random seed can take negative values too)
   5. Create the array using CreateArrayOfElements
   5. Call CreateBST function to get the tree
   6. If tree is has less that 0 nodes (i.e not including 0), then print "Binary Create Failed \n" on the terminal and return EXIT_FAILURE
