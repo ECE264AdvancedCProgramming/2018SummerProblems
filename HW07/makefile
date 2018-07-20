@@ -18,7 +18,7 @@ $(TARGET): $(OBJS)
 
 $(OBJS):$(BINDIR)/%.o: %.c
 	@mkdir -p $(@D)
-	$(GCC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ $<
 
 test1: $(TARGET)
 	./$(BINDIR)/$(TARGET) Test-Cases/Test/simple1.txt > temp.txt
