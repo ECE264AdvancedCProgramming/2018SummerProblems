@@ -43,11 +43,11 @@ out_i = [(cumulative frequency(int_i) - min) / (number of pixels - min)] * 255
 
 For example\
 Intensity value for 123 would be calcuated as below:\
-cumulative frequency(128) = 8\
+cumulative frequency(123) = 8\
 min = 1\
 number of pixels = 8 (i.e the number of elements in the original array {0, 123, 45, 123, 56, 123, 45, 21})\
 
-out_i (128) = [(8-1) / (8-1)] * 255 = 255 (so value of 128 got mapped to 255)\
+out_i (123) = [(8-1) / (8-1)] * 255 = 255 (so value of 123 got mapped to 255)\
 
 # Functions you need to complete
 In this exercise, you have to complete six functions - `BMP_Open`, `Is_BMPHeader_Valid`,`BMP_Write`, `BMP_Free` in `bmpimage.c`;`ImgToGray` in `bmpfunc.c`; and `main()` in `pa08.c`.
