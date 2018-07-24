@@ -60,7 +60,7 @@ In this exercise, you have to complete six functions - `BMP_Open`, `Is_BMPHeader
 3. `BMP_Write` -  this function writes the output as `BMP` file. You should first write `BMP` header into the file and then you should write the BMP Image data into it.
 4. `BMP_Free` - Frees up all the memory allocated for the image.
 5. `ImgToGray` - This function takes input as the `BMP` image and then converts the image to `grayscale` (24-bit image with red=blue=green) by setting the red, blue, and green components of each pixel to the value obtained from calling `RGB2Gray` function. The output image should have red=blue=green for all pixels. If this function fails, print `"Error converting to Gray image\n"` and return `EXIT_FAILURE`.
-6. `HistogramEqualization` **(BONUS)** - Use the image ouput from ImgToGray as input and apply the histogram equalization algorithm described above and return an pointer to the image.
+6. `HistogramEqualization` **(BONUS)** - Use the image ouput from ImgToGray as input and apply the histogram equalization algorithm described above and return a pointer to the image.
 7. `main()` - In this exercise, your main function has the following the specifications.
   1. if the arguments != 3 then print "Wrong arguments\n" and return
   2. 1st input name of the input file image. If opening up of this file fails print `Error opening BMP file`, and return `EXIT_FAILURE`.
