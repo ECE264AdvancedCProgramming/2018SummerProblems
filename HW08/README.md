@@ -1,7 +1,7 @@
-# Image Processing (Histogram Equalization) (Assignment)
+# Image Processing (Histogram Equalization) (Exercise)
 
-## This is an assignment
-In this assignment you will be implementing an important image processing algorithm which is used in scanned document processing, OCR, image segmentation, etc
+## This is an exercise
+In this exercise you will be implementing an important image processing algorithm which is used in scanned document processing, OCR, image segmentation, etc
 
 <strong>Please read the entire file and the comments in the files provided before you ask any question.</strong><br>
 <strong>You should write your own Makefile to test the code.</strong>
@@ -27,15 +27,18 @@ Histogram Equalization increases the global contrast of images. Through this pro
 The method is useful in images with backgrounds and foregrounds that are both bright or both dark. In particular, the method can lead to better views of bone structure in x-ray images, and to better detail in photographs that are over or under-exposed. A key advantage of the method is that it is a fairly straightforward technique and an invertible operator. So in theory, if the histogram equalization function is known, then the original histogram can be recovered. The calculation is not computationally intensive.
 
 # Functions you need to complete
-In this exercise, you have to complete six functions - `BMP_Open`, `Is_BMPHeader_Valid`,`BMP_Write`, `BMP_Free` in `bmpimage.c`;`ImgToGray`, `HistogramEqualization` in `bmpfunc.c`; and `main()` in `pa08.c`.
+In this exercise, you have to complete six functions - `BMP_Open`, `Is_BMPHeader_Valid`,`BMP_Write`, `BMP_Free` in `bmpimage.c`;`ImgToGray` in `bmpfunc.c`; and `main()` in `pa08.c`.
 **Do not hardcode the name of the files in your code**
+
+**BONUS, This homework contains a bonus section. For the bonus section, you will need to complete HistogramEqualization method**
+`HistogramEqualization`
 
 1. `BMP_Open` -  This function takes the name of the file as input, opens up a file. Checks whether the file has right `BMP` header by calling `Is_BMPHeader_Valid` function. If everything is alright, then stores the value of pixels in the `data` . Finally returns BMPImage\* .
 2. `Is_BMPHeader_Valid` - Checks whether the input file has right `BMP` header. You can refer to `Intermediate C Programming` to look for the correct checks for the header.
 3. `BMP_Write` -  this function writes the output as `BMP` file. You should first write `BMP` header into the file and then you should write the BMP Image data into it.
 4. `BMP_Free` - Frees up all the memory allocated for the image.
 5. `ImgToGray` - This function takes input as the `BMP` image and then converts the image to `grayscale` (24-bit image with red=blue=green) by setting the red, blue, and green components of each pixel to the value obtained from calling `RGB2Gray` function. The output image should have red=blue=green for all pixels. If this function fails, print `"Error converting to Gray image\n"` and return `EXIT_FAILURE`.
-6. `HistogramEqualization` - Use the image ouput fromm ImgToGray as input and apply the histogram equalization algorithm described above and return an pointer to the image.
+6. `HistogramEqualization` **(BONUS)** - Use the image ouput fromm ImgToGray as input and apply the histogram equalization algorithm described above and return an pointer to the image.
 7. `main()` - In this assignment, your main function has the following the specifications.
   1. if the arguments != 3 then print "Wrong arguments\n" and return
   2. 1st input name of the input file image. If opening up of this file fails print `Error opening BMP file`, and return `EXIT_FAILURE`.
@@ -76,7 +79,7 @@ Note that you should use other input arguments to extensively test your function
 The command to create zip file is as follows:
 ```
 
-zip HW16.zip pa16.c bmpfunc.c bmpimage.c
+zip HW08.zip pa08.c bmpfunc.c bmpimage.c
 
 ```
 <strong>You will not get any credits if the submitted file is not zipped</strong>
