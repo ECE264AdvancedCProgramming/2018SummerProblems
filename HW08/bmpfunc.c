@@ -17,7 +17,6 @@ int RGB2Gray(unsigned char red, unsigned char green, unsigned char blue)
 BMPImage * ImgToGray(BMPImage * img)
 {
 	// Convert color image to grayscale
-	// BONUS for HW08
 	return NULL;
 }
 
