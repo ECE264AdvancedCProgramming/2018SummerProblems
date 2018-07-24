@@ -13,8 +13,8 @@ You will learn to
 * Working with Images
 * Understand the color scale in images
 
-# Description of Assignment
-This assignment requires you to do the following :
+# Description
+This exercise requires you to do the following :
 1. Open the colored BMP image
 2. Convert the colored image to grayscale
 3. Run Histogram Equalization algorithm on grayscale image
@@ -25,6 +25,19 @@ This assignment requires you to do the following :
 Histogram Equalization increases the global contrast of images. Through this process, the intensities can be better distributed on the histogram. This allows for areas of lower local contrast to gain a higher contrast. Histogram equalization accomplishes this by spreading out the most frequent intensity values.
 
 The method is useful in images with backgrounds and foregrounds that are both bright or both dark. In particular, the method can lead to better views of bone structure in x-ray images, and to better detail in photographs that are over or under-exposed. A key advantage of the method is that it is a fairly straightforward technique and an invertible operator. So in theory, if the histogram equalization function is known, then the original histogram can be recovered. The calculation is not computationally intensive.
+
+## How to compute histogram equalization?
+
+To understand what histogram equlization is let's discuss about histogram first.
+
+Histogram of an image is the frequency distribution of each image pixel intensity value. What do I mean by that? If the image pixels values are {0, 123, 45, 123, 56, 123, 45, 21} then it's histogram would be { 0:1, 1:0, .... , 21:1, ....,  45: 2, ..., 56:1, ...., 123:3, 124:0, 125:0, .....255:0}, in the notation x:y `x` is the index and `y` is the value. What the histogram is doing is essentially counting how many times the value repeats in the image.
+
+Once this is done we calculate the the cumulative frequencies, which would look like:
+{0:1, 1:1, ......, 21:2, ......, 45: 4, ..., 56:5, ...., 123:8, .... 125:8, .... 255:8}
+The value at each poistion is the sum of frequencies upto that index, i.e freq at 56 = freq(0) + freq(1) .... + freq(56)
+
+The final step is to update the pixel vale based on the cumulative frequencies.
+
 
 # Functions you need to complete
 In this exercise, you have to complete six functions - `BMP_Open`, `Is_BMPHeader_Valid`,`BMP_Write`, `BMP_Free` in `bmpimage.c`;`ImgToGray` in `bmpfunc.c`; and `main()` in `pa08.c`.
