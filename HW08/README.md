@@ -30,14 +30,23 @@ The method is useful in images with backgrounds and foregrounds that are both br
 
 To understand what histogram equlization is let's discuss about histogram first.
 
-Histogram of an image is the frequency distribution of each image pixel intensity value. What do I mean by that? If the image pixels values are {0, 123, 45, 123, 56, 123, 45, 21} then it's histogram would be { 0:1, 1:0, .... , 21:1, ....,  45: 2, ..., 56:1, ...., 123:3, 124:0, 125:0, .....255:0}, in the notation x:y `x` is the index and `y` is the value. What the histogram is doing is essentially counting how many times the value repeats in the image.
+Histogram of an image is the frequency distribution of each image pixel intensity value. What do I mean by that? If the image pixels values are {0, 123, 45, 123, 56, 123, 45, 21} then it's histogram would be { 0:1, 1:0, .... , 21:1, ....,  45: 2, ..., 56:1, ...., 123:3, 124:0, 125:0, .....255:0}, in the notation x:y `x` is the index and `y` is the value. What the histogram is doing is essentially counting how many times the value repeats in the image (i.e the frequency of each pixel).
 
-Once this is done we calculate the the cumulative frequencies, which would look like:
-{0:1, 1:1, ......, 21:2, ......, 45: 4, ..., 56:5, ...., 123:8, .... 125:8, .... 255:8}
-The value at each poistion is the sum of frequencies upto that index, i.e freq at 56 = freq(0) + freq(1) .... + freq(56)
+Once this is done we calculate the the cumulative frequencies, which would look like:\
+{0:1, 1:1, ......, 21:2, ......, 45: 4, ..., 56:5, ...., 123:8, .... 125:8, .... 255:8}\
+The value at each poistion is the sum of frequencies upto that index, i.e freq at 56 = freq(0) + freq(1) .... + freq(56)\
+The final step is to update the pixel value based on the cumulative frequencies.
+Firstly we find the min frequency in our cumulative frequency. In the example above it will be 1 since the value lowest cumulative frequency value is 1 (i.e for index '0')
 
-The final step is to update the pixel vale based on the cumulative frequencies.
+For a given input pixel value 'inp_i' the output pixel value 'out_i' is given by\
+out_i = [(cumulative frequency(int_i) - min) / (number of pixels - min)] * 255
 
+For example\
+Intensity value for 123 would be calcuated as below:\
+cumulative frequency(123) = 8\
+min = 1\
+number of pixels = 8 (i.e the number of elements in the original array {0, 123, 45, 123, 56, 123, 45, 21})\
+out_i (123) = [(8-1) / (8-1)] * 255 = 255 (so value of 123 got mapped to 255)
 
 # Functions you need to complete
 In this exercise, you have to complete six functions - `BMP_Open`, `Is_BMPHeader_Valid`,`BMP_Write`, `BMP_Free` in `bmpimage.c`;`ImgToGray` in `bmpfunc.c`; and `main()` in `pa08.c`.
@@ -51,12 +60,17 @@ In this exercise, you have to complete six functions - `BMP_Open`, `Is_BMPHeader
 3. `BMP_Write` -  this function writes the output as `BMP` file. You should first write `BMP` header into the file and then you should write the BMP Image data into it.
 4. `BMP_Free` - Frees up all the memory allocated for the image.
 5. `ImgToGray` - This function takes input as the `BMP` image and then converts the image to `grayscale` (24-bit image with red=blue=green) by setting the red, blue, and green components of each pixel to the value obtained from calling `RGB2Gray` function. The output image should have red=blue=green for all pixels. If this function fails, print `"Error converting to Gray image\n"` and return `EXIT_FAILURE`.
-6. `HistogramEqualization` **(BONUS)** - Use the image ouput fromm ImgToGray as input and apply the histogram equalization algorithm described above and return an pointer to the image.
-7. `main()` - In this assignment, your main function has the following the specifications.
+6. `HistogramEqualization` **(BONUS)** - Use the image ouput from ImgToGray as input and apply the histogram equalization algorithm described above and return a pointer to the image.
+7. `main()` - In this exercise, your main function has the following the specifications.
   1. if the arguments != 3 then print "Wrong arguments\n" and return
   2. 1st input name of the input file image. If opening up of this file fails print `Error opening BMP file`, and return `EXIT_FAILURE`.
   3. 2nd input output image file name.
   4. if file write fails, free memory and return EXIT_FAILURE
+  
+  a. The main function needs to open the image with dile name from argv[1].\
+  b. Convert this image to grayscale image using the ImgToGray function.\
+  c. An `equalize` function is provided to you in `equalize.h` and is linked via equalize.o this funtion does the histogram equalization. If you are working on the bonus call `HistogramEqualization` instead.\
+  d. Write the equalzied image into the file whose nameis given by argv[2]
 
 ### Function already given to you :
 **DO NOT modify this function**
@@ -78,9 +92,9 @@ Following are the files we provide:
 	3. `expected3.bmp` - ./bin/pa08 Test-Cases/Test/img3.bmp Test-Cases/Expected/expected3.bmp
 
 # Checking for memory errors
-You should also run ./pa16 with arguments under valgrind. To do that, you have to use, for example, the following command:
+You should also run ./pa08 with arguments under valgrind. To do that, you have to use, for example, the following command:
 ```
-valgrind --tool=memcheck --verbose --leak-check=full --log-file=valgrind.log ./pa16 exampleImages/RV2.bmp expectedImages/expectedRV2.bmp 3 2
+valgrind --tool=memcheck --verbose --leak-check=full --log-file=valgrind.log ./pa08 Test-Cases/Test/img1.bmp Test-Cases/Expected/expected1.bmp
 ```
 
 Note that you should use other input arguments to extensively test your function. If you follow the instructions and keep the malloc and free functions in the right place, you should not have memory problems in this assignment.
